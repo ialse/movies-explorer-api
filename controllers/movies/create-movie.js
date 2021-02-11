@@ -1,9 +1,24 @@
 const Movie = require('../../models/movie');
 
-async function createMovie(req, res, next) {
-  const { name, link } = req.body;
+function createMovie(req, res, next) {
+  const {
+    nameRU, nameEN, description, year, director, country,
+    duration, image, thumbnail, trailer,
+  } = req.body;
 
-  return Movie.create({ name, link, owner: req.user._id })
+  return Movie.create({
+    nameRU,
+    nameEN,
+    description,
+    year,
+    director,
+    country,
+    duration,
+    image,
+    thumbnail,
+    trailer,
+    owner: req.user._id,
+  })
     .then((movie) => {
       const { _id } = movie;
       return Movie.findById({ _id })

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const validatorLib = require('validator');
-const httpValid = require('../helpers/regexp');
 
 const userSchema = new mongoose.Schema({
   email: {

@@ -13,13 +13,7 @@ function updUser(req, res, next) {
     },
   )
     .then((user) => res.status(200).send(user))
-    // eslint-disable-next-line consistent-return
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        return res.status(400).send({ message: err.message });
-      }
-      next(err);
-    });
+    .catch(next);
 }
 
 module.exports = updUser;

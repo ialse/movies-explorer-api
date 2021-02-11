@@ -41,10 +41,7 @@ const cardSchema = new mongoose.Schema({
   duration: {
     type: Number,
     required: [true, 'Поле обязательно'],
-    minlength: [2, 'Минимальная длина 2 символа'],
-    maxlength: [60, 'Максимальная длина 60 символов'],
   },
-
   image: {
     type: String,
     required: true,
