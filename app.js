@@ -10,7 +10,7 @@ const router = require('./routes');
 const finalErr = require('./errors/final-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { corsOptions } = require('./helpers/cors-options');
-const { limiter } = require('./helpers/limiter');
+const limiter = require('./helpers/limiter');
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 
-app.use('/', router);
+app.use(router);
 
 app.use(errorLogger);
 app.use(errors());

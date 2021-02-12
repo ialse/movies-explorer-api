@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     throw new ValidateError('Пароль должен быть заполнен');
   }
 
-  if (!password.trim().length < 8) {
+  if (password.trim().length < 8) {
     throw new ValidateError('Пароль должен быть больше 8 символов');
   }
 

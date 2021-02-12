@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
-const httpValid = require('../helpers/regexp');
+const validator = require('validator');
 
-const cardSchema = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
+  movieId: {
+    type: String,
+    required: [true, 'Поле обязательно'],
+    unique: [true, 'Фильм уже сохранен'],
+  },
   nameRU: {
     type: String,
     required: [true, 'Поле обязательно'],
@@ -18,7 +23,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле обязательно'],
     minlength: [2, 'Минимальная длина 2 символа'],
-    maxlength: [500, 'Максимальная длина 500 символов'],
+    maxlength: [1000, 'Максимальная длина 1000 символов'],
   },
   year: {
     type: String,
@@ -46,9 +51,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator(link) {
-        return httpValid(link);
-      },
+      validator: (link) => validator.isURL(link),
       message: 'Ссылка некорректная',
     },
   },
@@ -56,9 +59,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator(link) {
-        return httpValid(link);
-      },
+      validator: (link) => validator.isURL(link),
       message: 'Ссылка некорректная',
     },
   },
@@ -66,9 +67,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator(link) {
-        return httpValid(link);
-      },
+      validator: (link) => validator.isURL(link),
       message: 'Ссылка некорректная',
     },
   },
@@ -76,8 +75,7 @@ const cardSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
     required: true,
-    select: false,
   },
 });
 
-module.exports = mongoose.model('card', cardSchema);
+module.exports = mongoose.model('movie', movieSchema);

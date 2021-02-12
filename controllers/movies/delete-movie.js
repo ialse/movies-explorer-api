@@ -1,8 +1,8 @@
-const Movie = require('../../models/movie'); // импортирую модель карточки
+const Movie = require('../../models/movie');
 const NotFoundError = require('../../errors/not-found-err');
 const ForbiddenError = require('../../errors/forbidden-err');
 
-// Удаляю карточку из базы
+// Удаляю фильм из базы
 function delMovie(req, res, next) {
   const { movieId } = req.params;
   return Movie.findById(movieId)
@@ -10,7 +10,7 @@ function delMovie(req, res, next) {
       if (!movie) {
         throw new NotFoundError('Фильм не найден среди сохраненных');
       }
-      // проверяем, принадлежит ли фильм владельцу
+
       if (req.user._id === String(movie.owner)) {
         return Movie.findByIdAndRemove(movieId);
       }
@@ -18,7 +18,7 @@ function delMovie(req, res, next) {
     })
     .then((movie) => {
       if (movie) {
-        return res.status(200).send({ message: `Удален фильм: ${movie.name}` });
+        return res.status(200).send({ message: `Удален фильм: ${movie.nameRU}` });
       }
       throw new NotFoundError('Фильм не найден среди сохраненных');
     })

@@ -1,6 +1,6 @@
 const Movie = require('../../models/movie');
 
-// Получаю все карточки из базы
+// Получаю все фильмы из базы
 function getMovies(req, res, next) {
   return Movie.find({})
     .populate(['owner'])
