@@ -1,6 +1,5 @@
 const User = require('../../models/user');
 
-// Получаю данные пользователя из файла
 function updUser(req, res, next) {
   const { email, name } = req.body;
 

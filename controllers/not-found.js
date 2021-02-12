@@ -1,8 +1,8 @@
 const NotFoundError = require('../errors/not-found-err');
+const { URL_NOT_FOUND } = require('../helpers/text-messages');
 
-// Если ввели любую другую страницу
 function notFound() {
-  throw new NotFoundError('Запрашиваемый ресурс не найден');
+  throw new NotFoundError(URL_NOT_FOUND);
 }
 
 module.exports = notFound;

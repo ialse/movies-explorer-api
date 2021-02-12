@@ -1,4 +1,5 @@
-// обработчик ошибок централизованный
+const { SERVER_FAIL } = require('../helpers/text-messages');
+
 // eslint-disable-next-line no-unused-vars
 const finalErr = (err, req, res, next) => {
   let { statusCode = 500 } = err;
@@ -13,7 +14,7 @@ const finalErr = (err, req, res, next) => {
     .status(statusCode)
     .send({
       message: statusCode === 500
-        ? 'На сервере произошла ошибка'
+        ? SERVER_FAIL
         : message,
     });
 };

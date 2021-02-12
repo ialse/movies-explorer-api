@@ -1,5 +1,6 @@
 const Movie = require('../../models/movie');
 const NoUnique = require('../../errors/no-unique-err');
+const { MOVIE_AVAILABLE } = require('../../helpers/text-messages');
 
 function createMovie(req, res, next) {
   const {
@@ -10,7 +11,7 @@ function createMovie(req, res, next) {
   return Movie.findOne({ movieId })
     .then((movieIdInMongo) => {
       if (movieIdInMongo) {
-        throw new NoUnique('Фильм уже сохранен');
+        throw new NoUnique(MOVIE_AVAILABLE);
       }
       return Movie.create({
         movieId,

@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../../config');
 const User = require('../../models/user');
 const AuthorisationError = require('../../errors/authorisation-err');
+const { AUTHORISATION_FAIL, AUTHORISATION_SUCCESS } = require('../../helpers/text-messages');
 
 function login(req, res, next) {
   const { email, password } = req.body;
@@ -12,7 +13,7 @@ function login(req, res, next) {
   return User.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        throw new AuthorisationError('Неправильные почта или пароль');
+        throw new AuthorisationError(AUTHORISATION_FAIL);
       }
       userID = user.id;
 
@@ -20,7 +21,7 @@ function login(req, res, next) {
     })
     .then((matched) => {
       if (!matched) {
-        throw new AuthorisationError('Неправильные почта или пароль');
+        throw new AuthorisationError(AUTHORISATION_FAIL);
       }
 
       const token = jwt.sign(
@@ -38,7 +39,7 @@ function login(req, res, next) {
           sameSite: true,
         },
       )
-        .send({ message: 'Авторизация успешна!' });
+        .send({ message: AUTHORISATION_SUCCESS });
     })
     .catch(next);
 }
