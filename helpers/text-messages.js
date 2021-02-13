@@ -11,6 +11,7 @@ const SERVER_FAIL = 'На сервере произошла ошибка';
 const NOT_AUTHORISATION = 'Необходима авторизация';
 const PASSWORD_EMPTY = 'Пароль должен быть заполнен';
 const PASSWORD_SHORT = 'Пароль должен быть больше 8 символов';
+const MOVIE_DELETE = 'Фильм удален';
 
 module.exports = {
   MOVIE_AVAILABLE,
@@ -26,4 +27,5 @@ module.exports = {
   NOT_AUTHORISATION,
   PASSWORD_EMPTY,
   PASSWORD_SHORT,
+  MOVIE_DELETE,
 };

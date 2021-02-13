@@ -9,7 +9,6 @@ function createUser(req, res, next) {
     email, password, name,
   } = req.body;
 
-  // Проверяем, есть ли пользователь с такой почтой в базе
   User.findOne({ email })
     .then((user) => {
       if (user) {
@@ -22,12 +21,7 @@ function createUser(req, res, next) {
       password: hash,
       name,
     }))
-    .then((user) => {
-      // eslint-disable-next-line prefer-object-spread
-      const objUser = Object.assign({}, user._doc);
-      delete objUser.password;
-      return res.status(200).send(objUser);
-    })
+    .then((user) => res.status(200).send(user))
     .catch(next);
 }
 

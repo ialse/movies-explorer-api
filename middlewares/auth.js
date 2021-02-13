@@ -5,13 +5,11 @@ const ForbiddenError = require('../errors/forbidden-err');
 const { NOT_AUTHORISATION } = require('../helpers/text-messages');
 
 module.exports = (req, res, next) => {
-  const { cookie } = req.headers;
-
-  if (!cookie) {
+  const token = req.cookies.jwt;
+  if (!token) {
     throw new ForbiddenError(NOT_AUTHORISATION);
   }
 
-  const token = cookie.replace('jwt=', '');
   let payload;
 
   try {
@@ -21,6 +19,5 @@ module.exports = (req, res, next) => {
   }
 
   req.user = payload;
-
   next();
 };

@@ -2,7 +2,7 @@ const Movie = require('../../models/movie');
 const NotFoundError = require('../../errors/not-found-err');
 const ForbiddenError = require('../../errors/forbidden-err');
 
-const { MOVIE_NOT_FOUND, DELETE_FORBIDDEN } = require('../../helpers/text-messages');
+const { MOVIE_NOT_FOUND, DELETE_FORBIDDEN, MOVIE_DELETE } = require('../../helpers/text-messages');
 
 // Удаляю фильм из базы
 function delMovie(req, res, next) {
@@ -20,7 +20,7 @@ function delMovie(req, res, next) {
     })
     .then((movie) => {
       if (movie) {
-        return res.status(200).send({ message: `Удален фильм: ${movie.nameRU}` });
+        return res.status(200).send({ message: `${MOVIE_DELETE}: '${movie.nameRU}'` });
       }
       throw new NotFoundError(MOVIE_NOT_FOUND);
     })

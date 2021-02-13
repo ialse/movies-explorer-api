@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 
 const { PORT, DB_CONN } = require('./config');
@@ -21,10 +22,11 @@ mongoose.connect(DB_CONN, {
 });
 
 app.use('*', cors(corsOptions));
-app.use(bodyParser.json());
 app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(router);
 

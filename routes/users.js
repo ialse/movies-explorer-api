@@ -5,6 +5,6 @@ const updateUser = require('../controllers/users/update-user');
 const { validateUpdateUser } = require('../helpers/validation');
 
 router.get('/me', getUser);
-router.put('/me', validateUpdateUser, updateUser);
+router.patch('/me', validateUpdateUser, updateUser);
 
 module.exports = router;
