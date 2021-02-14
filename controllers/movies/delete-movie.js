@@ -4,7 +4,6 @@ const ForbiddenError = require('../../errors/forbidden-err');
 
 const { MOVIE_NOT_FOUND, DELETE_FORBIDDEN, MOVIE_DELETE } = require('../../helpers/text-messages');
 
-// Удаляю фильм из базы
 function delMovie(req, res, next) {
   const { movieId } = req.params;
   return Movie.findById(movieId)

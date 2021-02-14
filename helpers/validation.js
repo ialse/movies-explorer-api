@@ -63,45 +63,33 @@ const validateUpdateUser = celebrate({
 
 const validateCreateMovies = celebrate({
   body: Joi.object().keys({
-    movieId: Joi.string().required().length(24).hex()
+    movieId: Joi.string().required()
       .messages({
         'any.required': 'Поле "movieId" обязательно',
-        'string.length': 'Идентификатор должен состоять из 24 символов',
-        'string.hex': 'Идентификатор должен быть в 16-ричной системе',
       }),
-    nameRU: Joi.string().required().min(2).max(30)
+    nameRU: Joi.string().required()
       .messages({
         'any.required': 'Поле "Название фильма на русском языке" обязательно',
-        'string.min': 'Поле "Название фильма на русском языке" должно быть от 2 до 30 символов',
-        'string.max': 'Поле "Название фильма на русском языке" должно быть от 2 до 30 символов',
       }),
-    nameEN: Joi.string().required().min(2).max(30)
+    nameEN: Joi.string().required()
       .messages({
         'any.required': 'Поле "Название фильма на английском языке" обязательно',
-        'string.min': 'Поле "Название фильма на английском языке" должно быть от 2 до 30 символов',
-        'string.max': 'Поле "Название фильма на английском языке" должно быть от 2 до 30 символов',
       }),
-    description: Joi.string().required().min(2).max(1000)
+    description: Joi.string().required()
       .messages({
         'any.required': 'Поле "Описание" обязательно',
-        'string.min': 'Поле "Описание" должно быть от 2 до 1000 символов',
-        'string.max': 'Поле "Описание" должно быть от 2 до 1000 символов',
       }),
     year: Joi.string().required().length(4).messages({
       'any.required': 'Поле "Год" обязательно',
       'any.length': 'Поле "Год" должно содержать 4 символа',
     }),
-    director: Joi.string().required().min(2).max(60)
+    director: Joi.string().required()
       .messages({
         'any.required': 'Поле "Режиссер" обязательно',
-        'string.min': 'Поле "Режиссер" должно быть от 2 до 60 символов',
-        'string.max': 'Поле "Режиссер" должно быть от 2 до 60 символов',
       }),
     country: Joi.string().required().min(2).max(60)
       .messages({
         'any.required': 'Поле "Страна" обязательно',
-        'string.min': 'Поле "Страна" должно быть от 2 до 60 символов',
-        'string.max': 'Поле "Страна" должно быть от 2 до 60 символов',
       }),
     duration: Joi.number().required().messages({
       'any.required': 'Поле "Длительность" обязательно',

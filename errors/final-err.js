@@ -1,6 +1,5 @@
 const { SERVER_FAIL } = require('../helpers/text-messages');
 
-// eslint-disable-next-line no-unused-vars
 const finalErr = (err, req, res, next) => {
   let { statusCode = 500 } = err;
   const { message } = err;
@@ -17,6 +16,7 @@ const finalErr = (err, req, res, next) => {
         ? SERVER_FAIL
         : message,
     });
+  next();
 };
 
 module.exports = finalErr;
