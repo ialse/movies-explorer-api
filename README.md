@@ -12,6 +12,7 @@ DELETE /movies/movieId - удаляет сохранённый фильм по _
 POST /signup - создаёт пользователя с переданными в теле  
 POST /signin - проверяет переданные в теле почту и пароль и возвращает JWT  
 
-#### Ссылка на API:
+#### Ссылки:
 Бэкенд  https://api.ialse-movies.students.nomoredomains.rocks  
-ИП  https://178.154.233.56/
+Фронтенд  https://ialse-movies.students.nomoredomains.rocks  
+Фронтенд на гитхаб:  https://github.com/ialse/movies-explorer-frontend
