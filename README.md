@@ -13,6 +13,6 @@ POST /signup - создаёт пользователя с переданными
 POST /signin - проверяет переданные в теле почту и пароль и возвращает JWT  
 
 #### Ссылки:
-Бэкенд  https://api.ialse-movies.students.nomoredomains.rocks  
-Фронтенд  https://ialse-movies.students.nomoredomains.rocks  
+Бэкенд  https://api.movies-ialse.students.nomoredomains.rocks  
+Фронтенд  https://movies-ialse.students.nomoredomains.rocks  
 Фронтенд на гитхаб:  https://github.com/ialse/movies-explorer-frontend
